@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback, useRef} from 'react';
-import socket from '../socket.js'; 
-import Button from '../Button';
+import socket, { baseURL } from '../socket.js'; 
+import Button from '../Button/index.js';
 
 function PDFViewer(){
     const [htmlContent, setHtmlContent] = useState('');
@@ -31,7 +31,7 @@ function PDFViewer(){
     })
 
     useEffect(()=> {
-        fetch('http://localhost:5000/src/example.html')
+        fetch(`${baseURL}/src/example.html`)
             .then(response => response.text())
             .then(data => {
                 setHtmlContent(data);
